@@ -2,8 +2,8 @@
 
 \setlength{\oddsidemargin}{0.25in}
 \setlength{\textwidth}{6.00in}
-\setlength{\topmargin}{-0.30in}
-\setlength{\textheight}{9.60in}
+\setlength{\topmargin}{-0.40in}
+\setlength{\textheight}{8.70in}
 
 \begin{document}\sloppy\sloppypar\raggedbottom\frenchspacing
 
@@ -46,7 +46,80 @@ sucks for REASONS.
 
 \section{Method}
 
-We run wobble. We get residuals.
+We run wobble. Wobble makes the assumption that the star never varies,
+except in RV. Wobble gives us a set of RV measurements $v_n$, one for
+each observation epoch $t_n$.
+
+We fourier transform (or perform some equivalent operation on) these
+RV measurements to find near-periodic oscillation modes with
+frequencies $\nu_k$. We show that these are plausibly p modes,
+observed in RV.
+
+Reminder, wobble works in log flux; that is, the data $y_n$ on
+spectrum $n$ are natural logarithms of continuum-normalized flux
+values.
+
+The wobble model is generative, so in addition to the RVs $v_n$ we
+also get residuals in the space of the data. That is, for every epoch
+$t_n$, we get a difference $\Delta y_n$ between the data $y_n$ at that
+epoch and the best-fit prediction of the wobble model.
+
+These residuals are in the data space, which is a (vacuum, log)
+wavelength basis that is at rest with respect to the observatory. This
+means that the spectrum $y_n$ has has had subtracted from it the
+best-fit constant template spectrum, shifted to the best-fit Doppler
+Shift under the assumption that there is no spectral variability.
+
+We seek to find the spectral variability associated with p-mode
+oscillations in these residuals. We have (more than) two options.
+
+\bigskip\noindent
+\textsl{Spectral-expectation option}---In this setting, we take the residuals
+$\Delta y_n$ at each epoch $n$ and project them onto the derivative of
+the spectral (log flux) expectation with respect to (log)
+temperature. These projections ought to be done at the best-fit RV
+relative to the observatory rest frame (the wobble-output RV). That
+is, we need to shift the spectral expectation derivatives before
+projection. These projections can be processed into temperature
+offsets $\Delta T_n$, one per epoch $t_n$..
+
+We show that these temperature offsets $\Delta T_n$ show fourier modes
+that are very similar in frequencies to the RV modes.
+
+Bonus points: We show that we can measure stellar temperature variations
+with incredible (formal) precision.
+
+Extra bonus points: We show phase relationships and that the
+temperature observations can be used to predict or correct the
+RVs. That is, we find a mitigation strategy. It probably involves the
+temperature variation having some approximately-$2\pi$ phase offset
+with respect to RV variation, depending on $\ell,m$.
+
+All this depends on having a form for the derivative of the spectral
+expectation with respect to temperature. This can be obtained
+data-driven using stellar twins (and I have both trivial and
+sophisticated ideas there) or it can be obtained by exercising a
+stellar atmosphere model. It doesn't matter in practice how good this
+is, because the project only depends on there being a good dot product
+between what we use and the true derivative.
+
+\bigskip\noindent
+\textsl{Time-expectation option}---We take the residuals $\Delta y_n$ and weight
+them with sines and cosines of $2\pi\,\nu_k\,t_n$. We then shift to a
+common stellar rest frame (using the wobble output RVs $v_n$) and
+construct weighted average spectral residuals for sine and cosine for
+each frequency $\nu_k$.  These weighted averages are the spectral
+variations that are coherent with each normal mode $k$.
+
+We show that these spectral variations that are coherent with each
+mode $k$ corresponds (at least roughly) to temperature variations.
+
+Bonus points: We show that the phase relationships between the
+spectral and RV variations make sense in terms of a physical model of
+the stellar surface.
+
+Extra bonus points: We find a mitigation strategy.
+
 
 ...
 
